@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>React Chatbot</title>
+		<title>Chatbot</title>
 	</head>
 	<body>
 		<div class="js-container"></div>
@@ -9,23 +9,26 @@
 		<script src="script.js"></script>
 		<script src="https://unpkg.com/supersimpledev/react.js"></script>
 		<script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
-    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+		<script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
 
 		<script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
 		<script type="text/babel">
-			//Translate JSX into JS
-			const button = <button>Floops </button>; //JSX thing, we can write html into js
-			const paragraph = <p>paragraph of text</p>;
-      const day = dayjs().format('  MMM  D YYYY')
-      const time = dayjs().format(' HH:mm:ss')
-      console.log(day)
+			function ChatInput() {
+				return (
+					<div>
+						<input />
+						<button>Send</button>
+					</div>
+				);
+			}
+
 			const div = (
 				<div>
 					<p>Harry Potter: The philosopher stone </p>
 					<p>Price: {2 + 2}</p>
-          <button>Reserve </button>
-          <p>Today is {day}</p>
+					<button>Reserve </button>
+					<p>Today is {day}</p>
 				</div>
 			);
 
@@ -34,9 +37,6 @@
 		</script>
 	</body>
 </html>
-
-
-
 
 <!--<!DOCTYPE html>
 <html>

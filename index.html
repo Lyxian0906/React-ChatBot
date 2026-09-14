@@ -11,9 +11,11 @@
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
-    <script type="text/babel">
+
+    <script type="text/babel"> //Translate JSX into JS
+      const button = <button>Hello I'm a button </button> //JSX thing, we can write html into js
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render('Hi');
+      ReactDOM.createRoot(container).render(button);
     </script>
   </body>
 </html>

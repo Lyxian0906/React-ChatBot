@@ -1,21 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>React Chatbot</title>
-  </head>
-  <body>
-    <div class="js-container"></div>
+	<head>
+		<title>React Chatbot</title>
+	</head>
+	<body>
+		<div class="js-container"></div>
 
-    <script src="script.js"></script>
-    <script src="https://unpkg.com/supersimpledev/react.js"></script>
-    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+		<script src="script.js"></script>
+		<script src="https://unpkg.com/supersimpledev/react.js"></script>
+		<script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
-    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+		<script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
-    <script type="text/babel"> //Translate JSX into JS
-      const button = <button>Hello I'm a button </button> //JSX thing, we can write html into js
-      const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(button);
-    </script>
-  </body>
+		<script type="text/babel">
+			//Translate JSX into JS
+			const button = <button>Hello I'm a button </button>; //JSX thing, we can write html into js
+			const paragraph = <p>paragraph of text</p>;
+			const div = (
+				<div>
+					<button>Hello I'm a button </button>
+					<p>paragraph of text</p>
+				</div>
+			);
+
+			const container = document.querySelector(".js-container");
+			ReactDOM.createRoot(container).render(div);
+		</script>
+	</body>
 </html>

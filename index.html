@@ -9,6 +9,7 @@
 		<script src="script.js"></script>
 		<script src="https://unpkg.com/supersimpledev/react.js"></script>
 		<script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
 
 		<script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
@@ -16,11 +17,14 @@
 			//Translate JSX into JS
 			const button = <button>Floops </button>; //JSX thing, we can write html into js
 			const paragraph = <p>paragraph of text</p>;
+      const day = dayjs().format('  MMM  D YYYY')
+      console.log(day)
 			const div = (
 				<div>
 					<p>Harry Potter: The philosopher stone </p>
 					<p>Price: {2 + 2}</p>
           <button>Reserve </button>
+          <p>Today is {day}</p>
 				</div>
 			);
 

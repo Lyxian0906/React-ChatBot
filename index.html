@@ -69,17 +69,20 @@
 
 							function sendMessage() {
 								setChatMessages([
-								...chatMessages
-								]);
-								};
+								...chatMessages,
+								{
+									message: 'test',
+									sender: 'user',
+									id: crypto.randomUUID()
 
-								console.log(ChatMessages)
+								},
+								]);
 							}
 							return (
 								<>
 									<button onClick={sendMessage}>Send message</button>
 
-									{ChatMessages.map((chatMessage) => {
+									{chatMessages.map((chatMessage) => {
 										return (
 											<ChatMessage
 												message={chatMessage.message}
@@ -91,6 +94,7 @@
 								</>
 							);
 						}
+
 
 						function App() {
 							return (
@@ -106,6 +110,7 @@
 		</script>
 	</body>
 </html>
+
 
 <!--<!DOCTYPE html>
 <html>

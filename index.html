@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>React Chatbot</title>
+		<title>Chatbot</title>
 	</head>
 	<body>
 		<div class="js-container"></div>
@@ -9,34 +9,56 @@
 		<script src="script.js"></script>
 		<script src="https://unpkg.com/supersimpledev/react.js"></script>
 		<script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
-    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+		<script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
 
 		<script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
 		<script type="text/babel">
-			//Translate JSX into JS
-			const button = <button>Floops </button>; //JSX thing, we can write html into js
-			const paragraph = <p>paragraph of text</p>;
-      const day = dayjs().format('  MMM  D YYYY')
-      const time = dayjs().format(' HH:mm:ss')
-      console.log(day)
-			const div = (
-				<div>
-					<p>Harry Potter: The philosopher stone </p>
-					<p>Price: {2 + 2}</p>
-          <button>Reserve </button>
-          <p>Today is {day}</p>
-				</div>
+			function ChatInput() {
+				return (
+					<>
+						<input placeholder="Send a message" size="30" />
+						<button>Send</button>
+					</>
+				);
+			}
+
+			function ChatMessage(props) {
+				const message = props.message;
+				const sender = props.sender;
+
+//If sender is robot, we put the image of a , we change the side of the image by putting first the image
+				if (sender === "robot") {
+					return (
+						<div>
+							<img src="Photos/connor.webp" width="50" />
+							{message}
+						</div>
+					);
+				}
+
+//Else we just put the other image
+				return (
+					<div>
+						{message}
+						<img src="Photos/fish.jpg" width="50" />
+					</div>
+				);
+			}
+
+			const app = (
+				<>
+					<ChatInput />
+					<ChatMessage message="Hello Chatbot" sender="user" />
+					<ChatMessage message="Hello! How can I help u" sender="robot" />
+				</>
 			);
 
 			const container = document.querySelector(".js-container");
-			ReactDOM.createRoot(container).render(div);
+			ReactDOM.createRoot(container).render(app);
 		</script>
 	</body>
 </html>
-
-
-
 
 <!--<!DOCTYPE html>
 <html>

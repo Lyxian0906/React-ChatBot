@@ -50,23 +50,22 @@
 				);
 			}
 
-			function App() {
+			function ChatMessages() {
 				const ChatMessages = [
 					{
-						message: 'Hello Chatbot',
-						sender: 'user',
-						ide: 'id1'
+						message: "Hello Chatbot",
+						sender: "user",
+						ide: "id1",
 					},
 					{
-						message: 'Hello! How can I help u',
-						sender: 'robot',
-						id: 'id2'
+						message: "Hello! How can I help u",
+						sender: "robot",
+						id: "id2",
 					},
 				];
 
 				return (
 					<>
-						<ChatInput />
 						{ChatMessages.map((chatMessage) => {
 							return (
 								<ChatMessage
@@ -75,8 +74,16 @@
 									key={chatMessage.id}
 								/>
 							);
-						})}{" "}
-						//let us go through the whole array of elements
+						})}
+					</>
+				);
+			}
+
+			function App() {
+				return (
+					<>
+						<ChatInput />
+						<ChatMessages />
 					</>
 				);
 			}

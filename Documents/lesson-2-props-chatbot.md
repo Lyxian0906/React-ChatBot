@@ -152,6 +152,142 @@ function ChatMessage(props) {
 
 ---
 
+## Sender attribute
+
+Sender attribute in ChatMessage → having a sender attribute, can help us to know who sended the message.
+
+```jsx
+function ChatMessage(props) {
+  return (
+    <div>
+      {props.sender}: {props.message}
+    </div>
+  );
+}
+
+<ChatMessage message="Hello Chatbot" sender="user" />
+<ChatMessage message="Hello! How can I help u" sender="robot" />
+```
+
+---
+
+# React Shortcuts
+
+## Destructuring
+
+Instead of doing:
+
+```jsx
+function ChatMessage(props) {
+  const message = props.message;
+  const sender = props.sender;
+  ...
+}
+```
+
+We do:
+
+```jsx
+function ChatMessage(props) {
+  const { message, sender } = props;
+  ...
+}
+```
+
+→ This is **destructuring**: it takes the properties out of the object and puts them into constants with the same name.
+
+**Also** = instead of those both we can use the destructuring directly in the function:
+
+```jsx
+function ChatMessage({ message, sender }) {
+  return (
+    <div>
+      {sender}: {message}
+    </div>
+  );
+}
+```
+
+> It works the same with arrays too: `const [current, update] = array;` (we're gonna use this in Lesson 3 with `useState`).
+
+---
+
+## If statements directly inside JSX
+
+### Guard operator (&&)
+
+```javascript
+const result = val1 && val2;
+```
+
+- If `val1` is true then the result would be `val2`.
+- If `val1` is false, the result is `val1` (and React displays nothing).
+
+So inside JSX we can use it like an "if" without writing an if:
+
+```jsx
+function ChatMessage({ message, sender }) {
+  return (
+    <div>
+      {sender === 'robot' && (
+        <img src="Photos/robot.png" width="50" />
+      )}
+      {message}
+      {sender === 'user' && (
+        <img src="Photos/fish.jpg" width="50" />
+      )}
+    </div>
+  );
+}
+```
+
+> We can't write a normal `if () { }` inside JSX, that's why we use `&&` (or the ternary `condition ? a : b`).
+
+---
+
+## Code clean up
+
+- If we suround a line with `()` we can put it in other line. Like with the `<img ... />`
+
+```jsx
+// all in one line → hard to read
+return <div>{message}<img src="Photos/fish.jpg" width="50" /></div>;
+
+// with () we can split it
+return (
+  <div>
+    {message}
+    <img src="Photos/fish.jpg" width="50" />
+  </div>
+);
+```
+
+- When we create the app it's better doing it inside of a **component** instead of a variable, since it's easier to understand. And we have more functions, like being able to have a component inside other component.
+
+```jsx
+// instead of this
+const app = (
+  <>
+    <ChatInput />
+    <ChatMessage message="Hello Chatbot" />
+  </>
+);
+ReactDOM.createRoot(container).render(app);
+
+// better like this
+function App() {
+  return (
+    <>
+      <ChatInput />
+      <ChatMessage message="Hello Chatbot" />
+    </>
+  );
+}
+ReactDOM.createRoot(container).render(<App />);
+```
+
+---
+
 ## Full code of the chatbot (Lesson 2)
 
 ```html
@@ -208,6 +344,48 @@ function ChatMessage(props) {
 
 ---
 
-## What's next (Lesson 3 idea)
+## Same code but with the shortcuts applied
 
-Right now the messages are written by hand inside `app`. The next step is **State / Hooks**, so when we press Send the message gets added by itself instead of us writing the `<ChatMessage />` every time.
+```jsx
+function ChatInput() {
+  return (
+    <>
+      <input placeholder="Send a message" size="30" />
+      <button>Send</button>
+    </>
+  );
+}
+
+function ChatMessage({ message, sender }) {
+  return (
+    <div>
+      {sender === 'robot' && (
+        <img src="Photos/robot.png" width="50" />
+      )}
+      {message}
+      {sender === 'user' && (
+        <img src="Photos/fish.jpg" width="50" />
+      )}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <ChatInput />
+      <ChatMessage message="Hello Chatbot" sender="user" />
+      <ChatMessage message="Hello! How can I help u" sender="robot" />
+    </>
+  );
+}
+
+const container = document.querySelector('.js-container');
+ReactDOM.createRoot(container).render(<App />);
+```
+
+---
+
+## What's next (Lesson 3)
+
+Right now the messages are written by hand inside `App`. The next step is **State and Event Handlers**, so when we press Send the message gets added by itself instead of us writing the `<ChatMessage />` every time.

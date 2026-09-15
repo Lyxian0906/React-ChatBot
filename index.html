@@ -14,93 +14,95 @@
 		<script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
 		<script type="text/babel">
-			function ChatInput() {
-				return (
-					<>
-						<input placeholder="Send a message" size="30" />
-						<button>Send</button>
-					</>
-				);
-			}
-
-			function ChatMessage({ message, sender }) {
-				//const {message, sender} = props
-
-				//If sender is robot, we put the image of a , we change the side of the image by putting first the
-				//Shortcut below
-				/*
-				if (sender === "robot") {
-					return (
-						<div>
-							<img src="Photos/connor.webp" width="50" />
-							{message}
-						</div>
-					);
-				}
-*/
-
-				//Else we just put the other image
-				//&& if the value on the left is true then the result will be the vaule on the right
-				return (
-					<div>
-						{sender === "robot" && <img src="Photos/connor.webp" width="50" />}
-						{message}
-						{sender === "user" && <img src="Photos/fish.jpg" width="50" />}
-					</div>
-				);
-			}
-
-			function ChatMessages() {
-				const ChatMessages = [
-					{
-						message: "Hello Chatbot",
-						sender: "user",
-						ide: "id1",
-					},
-					{
-						message: "Hello! How can I help u",
-						sender: "robot",
-						id: "id2",
-					},
-				];
-
-				function sendMessage() {
-					ChatMessages.push({
-						message: 'test',
-						sender: 'user',
-						id: crypto.randomUUID()
-					});
-
-					console.log(ChatMessages)
-				}
-				return (
-					<>
-						<button onClick={sendMessage}>Send message</button>
-
-						{ChatMessages.map((chatMessage) => {
+						function ChatInput() {
 							return (
-								<ChatMessage
-									message={chatMessage.message}
-									sender={chatMessage.sender}
-									key={chatMessage.id}
-								/>
+								<>
+									<input placeholder="Send a message" size="30" />
+									<button>Send</button>
+								</>
 							);
-						})}
-					</>
-				);
-			}
+						}
 
-			function App() {
-				return (
-					<>
-						<ChatInput />
-						<ChatMessages />
-					</>
-				);
-			}
+						function ChatMessage({ message, sender }) {
+							//const {message, sender} = props
 
-			const container = document.querySelector(".js-container");
-			ReactDOM.createRoot(container).render(<App />);
+							//If sender is robot, we put the image of a , we change the side of the image by putting first the
+							//Shortcut below
+							/*
+							if (sender === "robot") {
+								return (
+									<div>
+										<img src="Photos/connor.webp" width="50" />
+										{message}
+									</div>
+								);
+							}
+			*/
+
+							//Else we just put the other image
+							//&& if the value on the left is true then the result will be the vaule on the right
+							return (
+								<div>
+									{sender === "robot" && <img src="Photos/connor.webp" width="50" />}
+									{message}
+									{sender === "user" && <img src="Photos/fish.jpg" width="50" />}
+								</div>
+							);
+						}
+
+						function ChatMessages() {
+							const array = React.useState([
+								{
+									message: "Hello Chatbot",
+									sender: "user",
+									ide: "id1",
+								},
+								{
+									message: "Hello! How can I help u",
+									sender: "robot",
+									id: "id2",
+								},
+							]);
+
+							const chatMessages = array[0];
+							const setChatMessages = array[1];
+
+							function sendMessage() {
+								setChatMessages([
+								...chatMessages
+								]);
+								};
+
+								console.log(ChatMessages)
+							}
+							return (
+								<>
+									<button onClick={sendMessage}>Send message</button>
+
+									{ChatMessages.map((chatMessage) => {
+										return (
+											<ChatMessage
+												message={chatMessage.message}
+												sender={chatMessage.sender}
+												key={chatMessage.id}
+											/>
+										);
+									})}
+								</>
+							);
+						}
+
+						function App() {
+							return (
+								<>
+									<ChatInput />
+									<ChatMessages />
+								</>
+							);
+						}
+
+						const container = document.querySelector(".js-container");
+						ReactDOM.createRoot(container).render(<App />);
 		</script>
 	</body>
 </html>

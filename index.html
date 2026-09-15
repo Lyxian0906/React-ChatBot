@@ -17,21 +17,18 @@
 			function ChatInput() {
 				return (
 					<>
-						<input 
-							placeholder="Send a message" 
-							size="30" 
-						/>
+						<input placeholder="Send a message" size="30" />
 						<button>Send</button>
 					</>
 				);
 			}
 
-			function ChatMessage({message, sender}) {
+			function ChatMessage({ message, sender }) {
 				//const {message, sender} = props
 
-//If sender is robot, we put the image of a , we change the side of the image by putting first the 
-//Shortcut below
-/*
+				//If sender is robot, we put the image of a , we change the side of the image by putting first the
+				//Shortcut below
+				/*
 				if (sender === "robot") {
 					return (
 						<div>
@@ -42,49 +39,42 @@
 				}
 */
 
-//Else we just put the other image
-//&& if the value on the left is true then the result will be the vaule on the right
+				//Else we just put the other image
+				//&& if the value on the left is true then the result will be the vaule on the right
 				return (
 					<div>
-						{sender === 'robot' && 
-						(<img src="Photos/connor.webp" width="50" />
-						)}
+						{sender === "robot" && <img src="Photos/connor.webp" width="50" />}
 						{message}
-						{sender  === 'user' && 
-						(<img src="Photos/fish.jpg" width="50" />
-						)}
+						{sender === "user" && <img src="Photos/fish.jpg" width="50" />}
 					</div>
 				);
 			}
 
-			function App (){
-				const ChatMessages = [{
-					message: 'Hello Chatbot',
-					sender: 'user',
-					
-				},
-				{
-					message: 'Hello! How can I help u',
-					sender: 'robot'
-				}
+			function App() {
+				const ChatMessages = [
+					{
+						message: "Hello Chatbot",
+						sender: "user",
+					},
+					{
+						message: "Hello! How can I help u",
+						sender: "robot",
+					},
 				];
 
-				const chatMessageComponents = ChatMessages.map((chatMessage) => 
-				{
-					return(
-						<ChatMessage 
-							message = {chatMessage.message}
-							sender = {chatMessage.sender}
-						/>
-					);
-				}); //let us go through the whole array of elements
-
-
-				return(
-				<>
-					<ChatInput />
-					{chatMessageComponents}
-				</>
+				return (
+					<>
+						<ChatInput />
+						{ChatMessages.map((chatMessage) => {
+							return (
+								<ChatMessage
+									message={chatMessage.message}
+									sender={chatMessage.sender}
+								/>
+							);
+						})}{" "}
+						//let us go through the whole array of elements
+					</>
 				);
 			}
 

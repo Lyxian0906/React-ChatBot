@@ -23,11 +23,12 @@
 				);
 			}
 
-			function ChatMessage(props) {
-				const message = props.message;
-				const sender = props.sender;
+			function ChatMessage({message, sender}) {
+				//const {message, sender} = props
 
-//If sender is robot, we put the image of a , we change the side of the image by putting first the image
+//If sender is robot, we put the image of a , we change the side of the image by putting first the 
+//Shortcut below
+/*
 				if (sender === "robot") {
 					return (
 						<div>
@@ -36,10 +37,13 @@
 						</div>
 					);
 				}
+*/
 
 //Else we just put the other image
+//&& if the value on the left is true then the result will be the vaule on the right
 				return (
 					<div>
+						{sender === 'robot' && <img src="Photos/connor.webp" width="50" />}
 						{message}
 						<img src="Photos/fish.jpg" width="50" />
 					</div>

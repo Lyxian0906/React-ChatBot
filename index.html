@@ -14,9 +14,21 @@
 		<script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
 		<script type="text/babel">
-			function ChatInput() {
+			function ChatInput({ chatMessages, setChatMessages }) {
+				const [inputText, setInputText] = React.useState(""); //the value starts with empty
 				function saveInoutText(event) {
-					console.log(event.target.value);
+					setInputText(event.target.value);
+				}
+
+				function sendMessage() {
+					setChatMessages([
+						...chatMessages,
+						{
+							message: "test",
+							sender: "user",
+							id: crypto.randomUUID(),
+						},
+					]);
 				}
 				return (
 					<>
@@ -25,7 +37,7 @@
 							size="30"
 							onChange={saveInoutText}
 						/>
-						<button>Send</button>
+						<button onClick={sendMessage}>Send</button>
 					</>
 				);
 			}
@@ -57,8 +69,25 @@
 				);
 			}
 
-			function ChatMessages() {
+			function ChatMessages({chatMessages}) {
+				return (
+					<>
+						{chatMessages.map((chatMessage) => {
+							return (
+								<ChatMessage
+									message={chatMessage.message}
+									sender={chatMessage.sender}
+									key={chatMessage.id}
+								/>
+							);
+						})}
+					</>
+				);
+			}
+
+			function App() {
 				const [chatMessages, setChatMessages] = React.useState([
+					//We lifted the state up to app component
 					{
 						message: "Hello Chatbot",
 						sender: "user",
@@ -78,38 +107,13 @@
 							const setChatMessages = array[1];
 							*/
 
-				function sendMessage() {
-					setChatMessages([
-						...chatMessages,
-						{
-							message: "test",
-							sender: "user",
-							id: crypto.randomUUID(),
-						},
-					]);
-				}
 				return (
 					<>
-						<button onClick={sendMessage}>Send message</button>
-
-						{chatMessages.map((chatMessage) => {
-							return (
-								<ChatMessage
-									message={chatMessage.message}
-									sender={chatMessage.sender}
-									key={chatMessage.id}
-								/>
-							);
-						})}
-					</>
-				);
-			}
-
-			function App() {
-				return (
-					<>
-						<ChatInput />
-						<ChatMessages />
+						<ChatInput
+							chatMessages={chatMessages} //using curly barekts we can save an array into a prop
+							sendMessages={setChatMessages}
+						/>
+						<ChatMessages chatMessages={chatMessages} />
 					</>
 				);
 			}

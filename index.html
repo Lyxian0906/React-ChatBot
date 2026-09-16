@@ -10,6 +10,7 @@
 		<script src="https://unpkg.com/supersimpledev/react.js"></script>
 		<script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 		<script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+		<script src="/Chatbot-Code/chatbot.js"></script>
 
 		<script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
@@ -29,6 +30,17 @@
 							id: crypto.randomUUID(),
 						},
 					]);
+
+					const response = Chatbot.getResponse(inputText); //This will gives us a response when we text (responses are in the chatbot.js)
+					setChatMessages([
+						...chatMessages,
+						{
+							message: response,
+							sender: "robot",
+							id: crypto.randomUUID(),
+						},
+					]);
+
 					setInputText(""); //This will remove the input text from the text box, but won't update the html
 				}
 				return (

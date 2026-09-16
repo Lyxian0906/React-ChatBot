@@ -22,18 +22,20 @@
 				}
 
 				function sendMessage() {
-					setChatMessages([
+					const newChatMessages = [
 						...chatMessages,
 						{
 							message: inputText,
 							sender: "user",
 							id: crypto.randomUUID(),
 						},
-					]);
+					];
+					//Wesave the new chat messages in the varible
+					setChatMessages(newChatMessages);
 
 					const response = Chatbot.getResponse(inputText); //This will gives us a response when we text (responses are in the chatbot.js)
 					setChatMessages([
-						...chatMessages,
+						...newChatMessages,
 						{
 							message: response,
 							sender: "robot",

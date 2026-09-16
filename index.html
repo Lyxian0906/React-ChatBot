@@ -24,11 +24,12 @@
 					setChatMessages([
 						...chatMessages,
 						{
-							message: "test",
+							message: inputText,
 							sender: "user",
 							id: crypto.randomUUID(),
 						},
 					]);
+					setInputText(""); //This will remove the input text from the text box, but won't update the html
 				}
 				return (
 					<>
@@ -36,6 +37,7 @@
 							placeholder="Send a message"
 							size="30"
 							onChange={saveInoutText}
+							value={inputText} //If we set now inputText to be empty will make the box to be empty
 						/>
 						<button onClick={sendMessage}>Send</button>
 					</>
@@ -69,7 +71,7 @@
 				);
 			}
 
-			function ChatMessages({chatMessages}) {
+			function ChatMessages({ chatMessages }) {
 				return (
 					<>
 						{chatMessages.map((chatMessage) => {

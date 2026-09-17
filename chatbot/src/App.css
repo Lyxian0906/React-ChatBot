@@ -1,42 +1,78 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body{
+    font-family: sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.send-button {
+	background-color: rgb(105, 57, 96);
+	color: rgb(240, 240, 240);
+	padding: 12px 20px; /*First value vertical*/
+	margin-left: 10px;
+	border: none;
+	border-radius: 10px;
+	font-size: 15px;
+	cursor: pointer; /*Hand pointer icon*/
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chat-input {
+    margin-bottom: 90px;
+	padding: 12px 15px;
+	border-radius: 10px;
+	border-width: 1px;
+	font-size: 15px;
+
+   
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.chat-input-container1 {
+	display: flex;
+     flex-grow: 1;
 }
 
-.card {
-  padding: 2em;
+.app-container2 {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+
+    height: 100vh; /*viewport height*/
+    display: flex;
+    flex-direction:column; /*vertically*/
 }
 
-.read-the-docs {
-  color: #888;
+.chat-message-user {
+	display: flex;
+	justify-content: end;
+    align-items: start; /*Top vertically*/
 }
+
+.chat-message-robot {
+	display: flex;
+    align-items: start;
+	
+}
+
+.message {
+	background-color: rgb(238, 238, 238);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    max-width: 300px;
+}
+
+.image-user, .image-robot{
+    width: 47px;
+
+}
+
+.chat-messages-container{
+    flex-grow: 1;
+    margin-top: 20px;
+    overflow: scroll; /*If there's way many messages it will scroll, instead of pushing the app down*/
+    scrollbar-width: none; /*No scroll bar*/
+
+}
+
+

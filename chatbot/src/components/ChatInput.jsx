@@ -1,5 +1,6 @@
 import { useState} from 'react'
 import {Chatbot} from 'supersimpledev' 
+import './ChatInput.css';
 
 export function ChatInput({ chatMessages, setChatMessages }) {
                 const [inputText, setInputText] = useState(""); //the value starts with empty

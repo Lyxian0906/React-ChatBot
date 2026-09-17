@@ -98,6 +98,9 @@
 			}
 
 			function ChatMessages({ chatMessages }) {
+				React.useEffect(() =>{
+					const = React.useRef(null);
+				}, [chatMessages])
 				return (
 					<div className="chat-messages-container">
 						{chatMessages.map((chatMessage) => {

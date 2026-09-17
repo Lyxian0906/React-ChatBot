@@ -47,15 +47,16 @@
 					setInputText(""); //This will remove the input text from the text box, but won't update the html
 				}
 				return (
-					<>
+					<div className="input-container1">
 						<input
 							placeholder="Send a message"
 							size="30"
 							onChange={saveInoutText}
 							value={inputText} //If we set now inputText to be empty will make the box to be empty
+							className="chat-input"
 						/>
 						<button onClick={sendMessage} className="send-button">Send</button>
-					</>
+					</div>
 				);
 			}
 
@@ -125,13 +126,13 @@
 							*/
 
 				return (
-					<>
+					<div className="app-container2">
 						<ChatInput
 							chatMessages={chatMessages} //using curly barekts we can save an array into a prop
 							setChatMessages={setChatMessages}
 						/>
 						<ChatMessages chatMessages={chatMessages} />
-					</>
+					</div>
 				);
 			}
 

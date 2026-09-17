@@ -11,6 +11,7 @@
 		<script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 		<script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
 		<script src="/Chatbot-Code/chatbot.js"></script>
+		<link href="/Styles/styles.css" rel="stylesheet" />
 
 		<script src="https://unpkg.com/supersimpledev/babel.js"></script>
 
@@ -53,7 +54,7 @@
 							onChange={saveInoutText}
 							value={inputText} //If we set now inputText to be empty will make the box to be empty
 						/>
-						<button onClick={sendMessage}>Send</button>
+						<button onClick={sendMessage} className="send-button">Send</button>
 					</>
 				);
 			}

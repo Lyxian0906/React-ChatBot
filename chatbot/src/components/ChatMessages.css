@@ -1,0 +1,7 @@
+.chat-messages-container{
+    flex-grow: 1;
+    margin-top: 20px;
+    overflow: scroll; /*If there's way many messages it will scroll, instead of pushing the app down*/
+    scrollbar-width: none; /*No scroll bar*/
+
+}

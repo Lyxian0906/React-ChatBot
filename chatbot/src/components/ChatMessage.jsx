@@ -1,5 +1,6 @@
 import robotPic from '../assets/connor.webp'
 import userPic from '../assets/fish.jpg'
+import './ChatMessage.css';
 
 export function ChatMessage({ message, sender }) {
                 //const {message, sender} = props

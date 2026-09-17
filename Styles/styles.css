@@ -16,15 +16,18 @@ body{
 }
 
 .chat-input {
+    margin-bottom: 90px;
 	padding: 12px 15px;
 	border-radius: 10px;
 	border-width: 1px;
 	font-size: 15px;
+
+   
 }
 
 .chat-input-container1 {
 	display: flex;
-	flex-grow: 1;
+     flex-grow: 1;
 }
 
 .app-container2 {

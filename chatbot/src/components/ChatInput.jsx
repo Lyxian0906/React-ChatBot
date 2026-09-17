@@ -1,7 +1,7 @@
 import { useState} from 'react'
 import {Chatbot} from 'supersimpledev' 
 
-function ChatInput({ chatMessages, setChatMessages }) {
+export function ChatInput({ chatMessages, setChatMessages }) {
                 const [inputText, setInputText] = useState(""); //the value starts with empty
                 function saveInoutText(event) {
                     setInputText(event.target.value);
